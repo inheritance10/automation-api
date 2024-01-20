@@ -8,20 +8,20 @@ export class CompanyController {
   constructor(private readonly companyService: CompanyService) {}
 
   @Post()
-  async create(@Body() createCompanyDto: CreateCompanyDto) {
-    return this.companyService.create(createCompanyDto);
+  async create(@Body() body: any) {
+    return this.companyService.create(body.company, body.user);
   }
 
   @Get()
   async findAll() {
-    return this.companyService.findAll();
+    return await this.companyService.findAll();
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.companyService.findOne(+id);
   }
-
+x
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateCompanyDto: UpdateCompanyDto) {
     return this.companyService.update(+id, updateCompanyDto);

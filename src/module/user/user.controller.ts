@@ -19,7 +19,7 @@ export class UserController {
 
   @Get()
   async findOne(@Param('id') id: number) {
-    //return await this.userService.findOne();
+    return await this.userService.getById(id);
   }
 
   @Patch(':id')

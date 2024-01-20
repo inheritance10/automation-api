@@ -50,12 +50,15 @@ export class AdvertisementService {
     return await this.fileRepository.save(file);
   }
 
-  async findAll() {
-    return `This action returns all advertisement`;
+  async findAll(companyId: any) {
+    return await this.advertisementRepository.find({
+      relations: ['offers', 'files','category'],
+      where: { companyId: companyId }
+    });
   }
 
   async findOne(id: number) {
-    return await this.advertisementRepository.find({
+    return await this.advertisementRepository.findOne({
       relations: ['offers', 'files','category'],
       where: { id: id }
     });

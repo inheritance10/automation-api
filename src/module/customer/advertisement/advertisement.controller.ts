@@ -12,9 +12,9 @@ export class AdvertisementController {
     return await this.advertisementService.create(createAdvertisementDto);
   }
 
-  @Get()
-  findAll() {
-    return this.advertisementService.findAll();
+  @Get(':companyId')
+  async findAll(@Param('companyId') companyId: string) {
+    return this.advertisementService.findAll(companyId);
   }
 
   @Get(':id')

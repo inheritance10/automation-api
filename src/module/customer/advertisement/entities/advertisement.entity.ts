@@ -37,7 +37,7 @@ export class Advertisement {
   company: Company;
 
   @ManyToOne(() => Category, category => category.advertisements)
-  @JoinColumn({ name: 'category_id' })
+  @JoinColumn()
   category: Category;
 
   @OneToMany(() => Offer, offer => offer.advertisement)

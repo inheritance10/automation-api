@@ -66,6 +66,13 @@ export class UserService {
       where: { email: email }
     });
   }
+
+  async getById(id: number) {
+    return await this.userRepository.findOne({
+      relations: ["company"],
+      where: { id: id }
+    });
+  }
   async update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
